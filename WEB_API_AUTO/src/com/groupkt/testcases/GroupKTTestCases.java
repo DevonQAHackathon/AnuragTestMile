@@ -18,12 +18,19 @@ public class GroupKTTestCases {
 	
 	@DriveWithDataFile("threeLetterCountryTestData.ini")
 	public void testByMakingGetRequestToSearchCountryByThreeCharacters(TestVariables tvars) throws Exception {
+		RunConfig.logger().info("Test for retriving country data for Three Characters as  : " + tvars.record().string("country"));
 		String countryName = tvars.record().string("country");
+		RunConfig.logger().info("Retriving Country Name code value from threeLetterCountryTestData.ini as : " + tvars.record().string("country"));
 		String expectedStatusLine = tvars.record().string("expectedStatusLine");
+		RunConfig.logger().info("Retriving expectedStatusLine value from threeLetterCountryTestData.ini as : " + tvars.record().string("expectedStatusLine"));
 		Integer expectedStatus = tvars.record().value("expectedStatus").asInt();
+		RunConfig.logger().info("Retriving expectedStatus value from threeLetterCountryTestData.ini as : " + tvars.record().value("expectedStatus").asInt());
+		RunConfig.logger().info("Generating uri after retriving data from threeLetterCountryTestData.ini file.");
 		String uriValue = "http://services.groupkt.com/country/get/iso3code/" + countryName;
 		URI uri = new URI(uriValue);
+		RunConfig.logger().info("Making GET Request using " + uriValue + " URI value");
 		Response res = RestAssured.given().get(uri);
+		RunConfig.logger().info("Was request response OK : " + (res.statusCode()==200));
 		Assertions.assertTrue("Are expected and Actual status codes same :", (res.statusCode()==expectedStatus));
 		Assertions.assertTrue("Are expected and Actual status lines matched : ", res.statusLine().equals(expectedStatusLine));
 		if(expectedStatus == 200) {
@@ -36,12 +43,19 @@ public class GroupKTTestCases {
 	
 	@DriveWithDataFile("twoLetterCountryTestData.ini")
 	public void testByMakingGetRequestToSearchCountryByTwoCharacters(TestVariables tvars) throws Exception {
+		RunConfig.logger().info("Test for retriving country data for Two Characters as  : " + tvars.record().string("country"));
 		String countryName = tvars.record().string("country");
+		RunConfig.logger().info("Retriving Country Name code value from twoLetterCountryTestData.ini as : " + tvars.record().string("country"));
 		String expectedStatusLine = tvars.record().string("expectedStatusLine");
+		RunConfig.logger().info("Retriving expectedStatusLine value from threeLetterCountryTestData.ini as : " + tvars.record().string("expectedStatusLine"));
 		Integer expectedStatus = tvars.record().value("expectedStatus").asInt();
+		RunConfig.logger().info("Retriving expectedStatus value from threeLetterCountryTestData.ini as : " + tvars.record().value("expectedStatus").asInt());
+		RunConfig.logger().info("Generating uri after retriving data from threeLetterCountryTestData.ini file.");
 		String uriValue = "http://services.groupkt.com/country/get/iso2code/" + countryName;
 		URI uri = new URI(uriValue);
+		RunConfig.logger().info("Making GET Request using " + uriValue + " URI value");
 		Response res = RestAssured.given().get(uri);
+		RunConfig.logger().info("Was request response OK : " + (res.statusCode()==200));
 		Assertions.assertTrue("Are expected and Actual status codes same :", (res.statusCode()==expectedStatus));
 		Assertions.assertTrue("Are expected and Actual status lines matched : ", res.statusLine().equals(expectedStatusLine));
 		if(expectedStatus == 200) {
