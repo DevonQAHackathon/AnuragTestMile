@@ -109,10 +109,15 @@ EXAMPLES
 # Test Project details:
 
 com.fixerio.testcases contains testcases for fixer.io api.
+
 com.groupkt.testcases contains testcases for GroupKT api.
+
 com.WeatherAPITestCases contains testcases for OpenWeather api.
+
 
 FixerAPIGetRequestTestCases.java, GroupKTTestCases.java, WeatherAPITestCases.java  are the Test classes.
 
+
 Used DriveWithDataFiles approach to retrieve data from '.ini' files present at location ../WEB_API_AUTO/autocognite-arjuna/data/sources/
 and used the data as test driven data.
+
